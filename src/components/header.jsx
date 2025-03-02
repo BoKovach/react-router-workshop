@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { Link } from 'react-router-dom';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -12,8 +13,15 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
+import { href } from 'react-router-dom';
 
-const pages = ['Home', 'Pricing', 'Login', 'Register'];
+const pages = [
+  { title: 'Home', path: '/' },
+  { title: 'Pricing', path: '/pricing' },
+  { title: 'Login', path: '/login' },
+  { title: 'Register', path: '/register' },
+];
+
 const settings = ['Profile', 'Logout'];
 
 function Header() {
@@ -85,9 +93,9 @@ function Header() {
               onClose={handleCloseNavMenu}
               sx={{ display: { xs: 'block', md: 'none' } }}
             >
-              {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography sx={{ textAlign: 'center' }}>{page}</Typography>
+              {pages.map(({ title }) => (
+                <MenuItem key={title} onClick={handleCloseNavMenu}>
+                  <Typography sx={{ textAlign: 'center' }}>{title}</Typography>
                 </MenuItem>
               ))}
             </Menu>
@@ -111,14 +119,16 @@ function Header() {
           >
             LOGO
           </Typography>
-          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-            {pages.map((page) => (
+          <Box sx={{flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+            {pages.map(({ title, path }) => (
               <Button
-                key={page}
+                component={Link}
+                to={path}
+                key={title}
                 onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: 'white', display: 'block' }}
+                sx={{my: 2, color: 'white', display: 'block' }}
               >
-                {page}
+                {title}
               </Button>
             ))}
           </Box>

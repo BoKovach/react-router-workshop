@@ -1,10 +1,19 @@
-import Button from '@mui/material/Button';
+import { Routes, Route } from 'react-router-dom';
 import Header from './components/header';
+import Home from './components/Home';
+import Pricing from './components/Pricing';
+import Login from './components/Login';
 
 function App() {
   return (
     <>
-        <Header />
+      <Header />
+
+      <Routes>
+        <Route path='/' element={<Home />} />
+        <Route path='/pricing' element={<Pricing />} />
+        <Route path='/login' element={<Login />} />
+      </Routes>
     </>
   )
 }
