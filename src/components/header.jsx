@@ -17,6 +17,7 @@ import { useAuthContext } from '../contexts/AuthContext';
 
 const pages = [
   { title: 'Home', path: '/' },
+  { title: 'Todos', path: '/todos'},
   { title: 'Pricing', path: '/pricing' },
   { title: 'Login', path: '/login', guestOnly: true },
   { title: 'Register', path: '/register', guestOnly: true },
